@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# See also http://alankent.wordpress.com/2014/08/02/magento-2-progress-towards-installation-via-composer/
+cd /var/www/html/
+# rm -rf htdocs
+# mkdir -p htdocs
+
+sudo curl -sS https://getcomposer.org/installer | php
+#php composer.phar install
+sudo composer install
+sudo mv composer.phar /usr/local/bin/composer
+
+# Swap to developer mode for better error diagnostics
+#echo "SetEnv MAGE_MODE production" >> .htaccess
+echo "SetEnv MAGE_MODE developer" >> .htaccess
+
+sudo chown www-data:www-data -R /var/www/html
