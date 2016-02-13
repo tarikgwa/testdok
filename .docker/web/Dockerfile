@@ -9,16 +9,16 @@ RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
     ln -s ~/.composer/vendor/bin/* /usr/local/bin/
 RUN rm -r /var/www/html
-ADD html.tar.gz /var/www/
+# html.tar.gz /var/www/
 RUN php5dismod xdebug
 RUN php5enmod mcrypt
 RUN a2enmod rewrite
-RUN chmod -R o+w var var/.htaccess app/etc
-RUN chmod -R o+w pub/media pub/static
+#RUN chmod -R o+w var var/.htaccess app/etc
+#RUN chmod -R o+w pub/media pub/static
 #RUN sed -i "s|\("^ServerName" * *\).*|localhost|" /etc/apache2/apache2.conf
 RUN sed -e 's/DirectoryIndex/DirectoryIndex index.php/' < /etc/apache2/mods-enabled/dir.conf > /tmp/foo.sed
 RUN mv /tmp/foo.sed /etc/apache2/mods-enabled/dir.conf
-
+WORKDIR /var/www/html
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
