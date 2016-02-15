@@ -1,4 +1,4 @@
-FROM ubuntu 14:04
+FROM ubuntu:14.04
 MAINTAINER aboualitarik@gmail.com
 RUN docker-compose build
 RUN cd html/
