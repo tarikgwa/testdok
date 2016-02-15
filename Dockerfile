@@ -1,3 +1,4 @@
+FROM ubuntu 14:04
 RUN docker-compose build
 RUN cd html/
 RUN chmod -R o+w var var/.htaccess app/etc
