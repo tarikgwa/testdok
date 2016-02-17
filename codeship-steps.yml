@@ -1,0 +1,2 @@
+- name: magento_web
+  tag: master
